@@ -1,0 +1,77 @@
+<!-- Todo List  -->
+ <html>
+    <head>
+        <title>To Do list</title>
+    </head>
+<body>
+<div class="div">
+    <h1>TO DO LIST</h1>
+    <input id="one" placeholder="Add List"> <!-- NOTE: Add CSS Style to this todo list  -->
+    <button class="addbtn" onclick="add()">Add</button>
+
+    <ul id="list-container">
+        <li>
+            Hello
+            <button class="deletebtn" onclick="deleteitem(event)">Delete</button>
+        </li>
+    </ul>
+</div>
+<style>
+    #one{
+        border: none;
+        border-bottom: 2px white;
+    }
+    .div {
+        position: absolute;
+        left: 525px;
+    }
+
+    ul li {
+        padding: 2px;
+    }
+    body{
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+
+        background-color: rgb(61, 0, 94);
+        color: white;
+    }
+    .addbtn{
+        background-color: rgb(255, 189, 255);
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 10px;
+        border: none;
+    }
+    .deletebtn{
+        background-color: rgb(255, 189, 255);
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 10px;
+        margin: 5px;
+        border: none;
+    }
+</style>
+<script>
+    //selecting ul
+
+    var ul = document.getElementById("list-container")
+    var box = document.getElementById("one")
+    function add() {
+        var list = document.createElement("li")
+
+        list.innerHTML = box.value + "<button  class='deletebtn' onclick='deleteitem(event)'>Delete</button>"
+        ul.append(list)
+    }
+
+
+    function deleteitem(event) {
+        event.target.parentElement.remove()  //parentElement is udes to remove the list element before the button
+    }
+
+</script>
+</body>
+</html>
