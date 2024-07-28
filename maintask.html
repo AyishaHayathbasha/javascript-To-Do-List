@@ -1,0 +1,165 @@
+<html>
+
+<head>
+    <title>Registeration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        #course {
+            width:100%
+        }
+        #save-button{
+            width:100%
+        }
+        body{
+            font-family: "Raleway", sans-serif;
+            background-color: #7c2946;
+            color: white;
+        }
+        #save-button{
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(167, 167, 167);
+            cursor: pointer;
+            color: black;
+            margin-top: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-size: medium;
+        }
+        #name{
+            margin: 5px;
+         }
+        #age{
+            margin: 5px;
+
+        }
+        #gender1{
+            margin: 5px;
+        }
+        #course{
+            margin: 5px;
+        }
+        #mail{
+            margin: 5px;
+        }
+
+        #form{
+            margin-top: 50px;
+        }
+        #std-details{
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1 id="form">
+            STUDENT FORM
+        </h1>
+        <table>
+            <form>
+                <tr>
+                    <th>Name</th>
+                    <td><input id="name" placeholder="Enter Your Name"></td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td><input type="number" id="age" placeholder="Enter Your Age"></td>
+                </tr>
+                <tr>
+                    <th id="gender1">Gender</th>
+                    <td>
+                        <input type="radio" name="gender" value="Female">Female
+                        <input type="radio" name="gender" value="Male">Male
+                    </td>
+                </tr>
+                <tr>
+                    <th>Course</th>
+                    <td>
+                        <select id="course" >
+                            <option>Javascript</option>
+                            <option>HTML</option>
+                            <option>CSS</option>
+                            <option>NodeJS</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>
+                        <input type="email" id="mail" placeholder="Enter Your Mail">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+
+                    <td>
+                        <center>
+                            <input id="save-button"  class="btn btn-primary"  type="button" value="save" onclick="addcontent()">
+                        </center>
+                    </td>
+                </tr>
+            </form>
+        </table>
+        <br>
+        <table  id="std-details" border="1">
+
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Course</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+
+        </table>
+    </center>
+</body>
+<script>
+
+    function addcontent() {
+        var name = document.getElementById("name").value
+        var age = document.getElementById("age").value
+        var gender = document.getElementsByName("gender")
+        var course = document.getElementById("course").value
+        var mail = document.getElementById("mail").value
+
+
+        for (i = 0; i < gender.length; i++) {
+
+            if (gender[i].checked) {
+                sex = gender[i].value
+            }
+        }
+
+
+
+        var std_details = document.getElementById("std-details")
+        var row = std_details.insertRow()
+        let name_cell = row.insertCell(0)
+        let age_cell = row.insertCell(1)
+        let gender_cell = row.insertCell(2)
+        let course_cell = row.insertCell(3)
+        let mail_cell = row.insertCell(4)
+        let delete_cell = row.insertCell(5)
+
+        name_cell.textContent = name
+        age_cell.textContent = age
+        gender_cell.textContent = sex
+        course_cell.textContent = course
+        mail_cell.textContent = mail
+        delete_cell.innerHTML = "<button class='btn btn-danger' style='background-color: #ed2939;' onclick='deletecontent(this)'>Delete</button>"
+    }
+
+    function deletecontent(element) {
+        element.parentElement.parentElement.remove()
+    }
+
+</script>
+</html>
